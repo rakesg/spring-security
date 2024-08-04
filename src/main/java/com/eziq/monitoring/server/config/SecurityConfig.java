@@ -62,10 +62,10 @@ public class SecurityConfig {
 //                .build();
 //    }
 //
-//    @Bean
-//    JdbcUserDetailsManager userDetailsManager(DataSource dataSource, PasswordEncoder encoder){
-//        return new JdbcUserDetailsManager(dataSource);
-//    }
+    @Bean
+    public JdbcUserDetailsManager userDetailsManager(DataSource dataSource) throws SQLException {
+        return new JdbcUserDetailsManager(dataSource);
+    }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -93,8 +93,9 @@ public class SecurityConfig {
         return new NimbusJwtEncoder(jwks);
     }
 
-//    @Bean
-//    PasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    PasswordEncoder passwordEncoder(){
+        //return new BCryptPasswordEncoder();
+        return NoOpPasswordEncoder.getInstance();
+    }
 }
