@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: eziq-monitoring-server
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password:
+    driver-class-name: org.postgresql.Driver
+rsa:
+  private-key: classpath:certs/private.pem
+  public-key: classpath:certs/public.pem
+
+springdoc:
+  api-docs:
+    path: /eziq-monitoring
+  swagger-ui:
+    disable-swagger-default-url: true
+    swagger-ui.path: /index.html
+
+#http://localhost:8080/swagger-ui/index.html?configUrl=/eziq-monitoring/swagger-config
